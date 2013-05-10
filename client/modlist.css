@@ -11,3 +11,7 @@ body {
 .label-universal {
     background: #3A87AD;
 }
+
+#inputDescription {
+    width: 97%;
+}

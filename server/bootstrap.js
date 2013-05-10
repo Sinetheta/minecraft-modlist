@@ -1,5 +1,5 @@
 // if the database is empty on server start, create some sample data.
-
+/*
 Meteor.startup(function() {
     if (Mods.find().count() === 0) {
         var data = [{
@@ -25,3 +25,4 @@ Meteor.startup(function() {
         }
     }
 });
+*/

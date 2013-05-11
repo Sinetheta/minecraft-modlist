@@ -18,7 +18,7 @@ Mods.allow({
     update: function(userId, mod, fields, modifier) {
         if (userId !== mod.owner) return false; // not the owner
 
-        var allowed = ['title', 'version', 'author', 'description', 'supports', 'compatibility'];
+        var allowed = ['title', 'version', 'author', 'description', 'supports', 'forge', 'availability'];
         if (_.difference(fields, allowed).length) return false; // tried to write to forbidden field
 
         // A good improvement would be to validate the type of the new
@@ -62,7 +62,8 @@ Meteor.methods({
             author: options.author,
             supports: options.supports,
             description: options.description,
-            compatibility: options.compatibility,
+            forge: options.forge,
+            availability: options.availability,
             created: (new Date()).getTime(),
             updated: (new Date()).getTime()
         });

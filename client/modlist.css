@@ -1,17 +1,21 @@
 body {
-    padding-top: 60px;
+    background: url(../snow.png);
 }
-
-.label-151 {
-    background: #468847;
+.label-clientside {
+    background: #049cdb;
 }
-.label-forge {
-    background: #B94A48;
+.label-ssp {
+    background: #ffc40d;
 }
-.label-universal {
-    background: #3A87AD;
+.label-lan {
+    background: #46a546;
 }
-
+.label-smp {
+    background: #9d261d;
+}
+.label-na {
+    background: #7a43b6;
+}
 #inputDescription {
     width: 97%;
 }

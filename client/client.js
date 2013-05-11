@@ -38,6 +38,14 @@ Template.modRow.events({
     }
 });
 
+Handlebars.registerHelper('forge_icon', function(forge) {
+    var icon = forge == 'yes'? '<span class="text-success"><i class="icon-ok"></i> Forge Compatible</span>':
+        forge == 'no'? '<span class="text-error"><i class="icon-remove"></i> Not Forge Compatible</span>':
+            '<span class="text-warning"><i class="icon-lock"></i> Forge Required</span>';
+
+    return new Handlebars.SafeString(icon)
+});
+
 Handlebars.registerHelper('time_since', function(date) {
     return moment(date).fromNow();
 });
@@ -64,7 +72,8 @@ Template.createDialog.events({
         var author = template.find('[name="author"]').value;
         var description = template.find('[name="description"]').value;
         var supports = template.find('[name="supports"]').value;
-        var compatibility = $(template.find('[name="compatibility"]')).val();
+        var forge = $(template.find('[name="forge"]')).val();
+        var availability = $(template.find('[name="availability"]')).val();
 
         if (title.length && description.length) {
             Meteor.call('createMod', {
@@ -73,7 +82,8 @@ Template.createDialog.events({
                 author: author,
                 description: description,
                 supports: supports,
-                compatibility: compatibility
+                forge: forge,
+                availability: availability
             }, function(error, mod) {
                 if (!error) {
                     Session.set('selected', mod);

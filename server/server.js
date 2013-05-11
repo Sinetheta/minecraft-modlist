@@ -3,5 +3,5 @@ Meteor.publish('directory', function () {
 });
 
 Meteor.publish('mods', function () {
-  return Mods.find({});
+  return Mods.find({}, {sort: {updated: -1}});
 });

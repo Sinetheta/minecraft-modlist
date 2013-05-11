@@ -1,0 +1,13 @@
+<template name="submit">
+    <h1>Submit a mod</h1>
+
+    {{#if currentUser}}
+        {{> submitForm}}
+    {{else}}
+        <div class="alert alert-block">
+          <h4>Login required</h4>
+          <br>
+          <p>Please {{loginButtons align="right"}} to submit a mod. You can register an account with us, or use your existing Facebook, Github, Google, or Twitter profile!
+        </div>
+    {{/if}}
+</template>

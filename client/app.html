@@ -1,0 +1,22 @@
+<head>
+<title>Minecraft Mod List</title>
+</head>
+
+<body>
+    {{> topNav}}
+
+    <main>
+        <div class="container">
+
+            {{> page_controller}}
+        </div>
+    </main>
+</body>
+
+<template name="page_controller">
+    {{#if isLoading}}
+        <h1>Loading...</h1>
+    {{else}}
+        {{{current_page}}}
+    {{/if}}
+</template>

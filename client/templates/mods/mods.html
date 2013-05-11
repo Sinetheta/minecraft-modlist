@@ -1,0 +1,38 @@
+<template name="mods">
+    <table class="table table-striped" id="mods">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Supports</th>
+                <th>Author</th>
+                <th>Availability</th>
+                <th>Forge Compatibility</th>
+                <th>Updated</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each mods}}
+                {{> modRow}}
+            {{/each}}
+        </tbody>
+    </table>
+</template>
+
+<template name="modRow">
+    <tr>
+        <td>{{title}} - {{version}}</td>
+        <td>{{supports}}</td>
+        <td>{{author}}</td>
+        <td>
+            {{#each availability}}
+                {{> badge}}
+            {{/each}}
+        </td>
+        <td>{{forge_icon forge}}</td>
+        <td>{{time_since updated}}</td>
+    </tr>
+</template>
+
+<template name="badge">
+    <span class="label label-{{cssify this}}">{{this}}</span>
+</template>

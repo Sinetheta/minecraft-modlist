@@ -1,6 +1,3 @@
-///////////////////////////////////////////////////////////////////////////////
-// Mods
-
 /*
   Each mod is represented by a document in the Mods collection:
     owner: user id
@@ -68,21 +65,26 @@ Meteor.methods({
             updated: (new Date()).getTime()
         });
     },
+    editMod: function(modId, options) {
+        options = options || {};
+
+        return Mods.update({
+            title: options.title,
+            version: options.version,
+            author: options.author,
+            supports: options.supports,
+            description: options.description,
+            forge: options.forge,
+            availability: options.availability,
+            updated: (new Date()).getTime()
+        });
+    },
     deleteMod: function(modId) {
         return Mods.remove(modId);
     }
 });
 
-///////////////////////////////////////////////////////////////////////////////
-// Users
-
-displayName = function(user) {
-    if (user.profile && user.profile.name) return user.profile.name;
-    return user.emails[0].address;
-};
-
-var contactEmail = function(user) {
-    if (user.emails && user.emails.length) return user.emails[0].address;
-    if (user.services && user.services.facebook && user.services.facebook.email) return user.services.facebook.email;
-    return null;
-};
+// Publish complete set of mods to all clients.
+Meteor.publish('mods', function () {
+  return Mods.find({}, {sort: {updated: -1}});
+});

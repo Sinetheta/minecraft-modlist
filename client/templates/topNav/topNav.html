@@ -1,0 +1,21 @@
+<template name="topNav">
+    <div class=" navbar navbar-static-top navbar-inverse" id="top-nav">
+        <div class="navbar-inner">
+            <div class="container">
+                <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse" href="">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                </a>
+                <a class="brand" href="/" title="Bootrstrap Magic written in AngularJS">Minecraft Mod List</a>
+                    <ul class="nav">
+                        <li><a href="/submit" title="Submit a mod">Submit</a></li>
+                        <li class="divider-vertical"></li>
+                        <li><a href="/about" title="About this website">About</a></li>
+                        <li class="divider-vertical"></li>
+                    </ul>
+                <div class="pull-right" id="login-link-container">{{loginButtons align="right"}}</div>
+            </div>
+        </div>
+    </div>
+</template>

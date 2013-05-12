@@ -5,11 +5,7 @@
 
 jquery
 bootstrap
-accounts-ui
 accounts-password
-accounts-github
-accounts-google
-accounts-twitter
-accounts-facebook
 preserve-inputs
 backbone
+accounts-ui-bootstrap-dropdown

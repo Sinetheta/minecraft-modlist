@@ -1,6 +1,6 @@
 Template.submit.events({
     'click #login-reveal': function() {
-        Accounts._loginButtonsSession.set('dropdownVisible', true);
+        setTimeout(function(){$('.dropdown-toggle').click();});
     }
 });
 

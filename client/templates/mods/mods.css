@@ -1,3 +1,24 @@
+.pagination-well {
+    position: relative;
+    padding-top: 12px;
+}
+.pagination-button-container{
+    text-align: center;
+}
+.pagination_perpage {
+    position:absolute;
+    top: 12px;
+    left: 9px;
+}
+.pagination_perpage label, .selectPerPage {
+    display: inline;
+}
+#selectPerPage {
+    margin: 0;
+}
+.pagination-button-container {
+    margin: 0;
+}
 .label-clientside {
     background: #049cdb;
 }

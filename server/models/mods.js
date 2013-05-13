@@ -84,7 +84,19 @@ Meteor.methods({
     }
 });
 
-// Publish complete set of mods to all clients.
-Meteor.publish('mods', function () {
-  return Mods.find({}, {sort: {updated: -1}});
+Meteor.publish('mods', function(skip, limit) {
+
+    return Mods.find({}, {
+        sort: {
+            updated: 1
+        },
+        skip: skip || 0,
+        limit: limit || 0,
+    });
+});
+
+Meteor.methods({
+    modCount: function() {
+        return Mods.find().count();
+    }
 });

@@ -67,8 +67,7 @@ Meteor.startup(function () {
         // Get action from link
         var action = $(e.currentTarget).attr('href');
         //ignore the login button
-        if (!action || action == '#') return true;
-
+        if (!action || action == '#' || action.match(/javascript/i)) return true;
         // Prevent default behavior
         e.preventDefault();
         e.stopPropagation();

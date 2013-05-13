@@ -16,6 +16,12 @@
             {{/each}}
         </tbody>
     </table>
+
+    <div class="pagination-well well well-small">
+        <div class="pagination-holder">
+            {{> pagination}}
+        </div>
+    </div>
 </template>
 
 <template name="modRow">
@@ -35,4 +41,18 @@
 
 <template name="badge">
     <span class="label label-{{cssify this}}">{{this}}</span>
+</template>
+
+<template name="pagination">
+    {{#if hasMultiplePages}}
+        <div class="pagination pagination-button-container">
+            <ul>
+                <li class="{{checkFirst}}"><a href="#" data-page="back" class="pageButton">&laquo;</a></li>
+                {{#times totalPages}}
+                    <li class="{{checkActive this}}"><a href="#" data-page="{{this}}"  class="pageButton">{{plusOne this}}</a></li>
+                {{/times}}
+                <li class="{{checkLast}}"><a href="#" data-page="next" class="pageButton">&raquo;</a></li>
+            </ul>
+        </div>
+    {{/if}}
 </template>

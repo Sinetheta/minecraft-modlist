@@ -96,7 +96,7 @@ Template.pagination.events({
                 page = target || 0; //zero if pagination is missing
                 break;
         }
-        var newSkip = Math.max(0, page * Session.get('pagingLimit') - 1);
+        var newSkip = Math.max(0, page * Session.get('pagingLimit'));
 
         Session.set('pagingSkip', newSkip);
     }

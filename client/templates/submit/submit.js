@@ -46,5 +46,11 @@ Template.submit.rendered = function() {
         //we include bootstrap icons in the options
         escapeMarkup: function(m) { return m; }
     });
-    $('#inputAvailability').select2();
+    $('#inputAvailability').select2();    
 }
+
+Template.successDialog.events({
+    'click .save': function() {
+        Session.set('showSuccessDialog', false);
+    }
+});

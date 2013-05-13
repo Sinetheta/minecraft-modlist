@@ -3,7 +3,7 @@ Session.setDefault('loading', true);
 Meteor.subscribe('directory');
 
 Deps.autorun(function() {
-  Meteor.modHandle = Meteor.subscribe('mods', Session.get('pagingSkip'), Session.get('pagingLimit'));
+  Meteor.modHandle = Meteor.subscribe('mods', Session.get('pagingFilter'), Session.get('pagingSkip'), Session.get('pagingLimit'));
 });
 
 // Get current user in a template

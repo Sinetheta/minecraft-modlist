@@ -4,16 +4,18 @@ Mods = new Meteor.Collection('mods');
 // Subscribe to 'servers' collection on startup.
 Meteor.modsHandle = Meteor.subscribe('mods');
 
+Session.set('pagingFilter', {});
 Session.set('pagingSkip', 0);
 Session.set('pagingLimit', 3);
 Session.set('totalRecords', 0);
 
-Meteor.call('modCount', function(err, result) {
+Meteor.call('modCount', Session.get('pagingFilter'), Session.get('pagingSkip'), Session.get('pagingLimit'), function(err, result) {
     Session.set('totalRecords', result);
 });
 
 Template.mods.mods = function() {
-    return Mods.find({}, {
+    return Mods.find(Session.get('pagingFilter'),
+        {
         sort: {
             updated: -1
         },
@@ -21,6 +23,22 @@ Template.mods.mods = function() {
         limit: Session.get('pagingLimit')
     });
 };
+
+Template.mods.events({
+    'change': function(event, template) {
+        var forge = $('#inputForge').val();
+        var availability = $('#inputAvailability').val();
+        var filter = {};
+
+        if(forge) filter.forge = forge;
+        if(availability) filter.availability = { $all: [availability] };
+
+        Session.set('pagingFilter', filter);
+        Meteor.call('modCount', Session.get('pagingFilter'), Session.get('pagingSkip'), Session.get('pagingLimit'), function(err, result) {
+            Session.set('totalRecords', result);
+        });
+    }
+});
 
 Handlebars.registerHelper('forge_icon', function(forge) {
     var icon = forge == 'yes' ? '<span class="text-success"><i class="icon-ok"></i> Forge Compatible</span>' : forge == 'no' ? '<span class="text-error"><i class="icon-remove"></i> Not Forge Compatible</span>' :
@@ -101,11 +119,42 @@ Template.pagination.events({
         Session.set('pagingSkip', newSkip);
     }
 });
+/*
+TODO:
+Select2 blocks events from propagating which leads to all kinds of garbge. 
+I'll need to look into this in order to style the dropdowns properly
+
+Template.mods.created = function() {
+    Template.mods.whenReady = new $.Deferred()
+    .done(function(){
+        $('#inputForge').on('change', filterQuery);
+        $('#inputAvailability').on('change', filterQuery);
+    });
+}
 
 Template.mods.rendered = function() {
-    $('#inputForge').select2({
-        //we include bootstrap icons in the options
-        escapeMarkup: function(m) { return m; }
-    });
-    $('#inputAvailability').select2();    
+    Template.mods.whenReady.resolve();
+    safelySelect2();
 }
+
+function safelySelect2() {
+    if(!$('#inputForge').hasClass('initialised')){
+        $('#inputForge').addClass('initialised')
+        .select2({
+            //we include bootstrap icons in the options
+            escapeMarkup: function(m) { return m; }
+        })
+        $('#inputAvailability').select2(); 
+    }
+};
+
+function filterQuery() {
+    var forge = $('#inputForge').val();
+    var availability = $('#inputAvailability').val();
+
+    console.log({
+        forge: forge,
+        availability: availability
+    })
+};
+*/

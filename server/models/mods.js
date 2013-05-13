@@ -33,7 +33,7 @@ Meteor.methods({
     // TODO: extract this and validate edits too
     createMod: function(options) {
         options = options || {};
-        /*if (! (typeof options.title === 'string' && options.title.length))
+    /*if (! (typeof options.title === 'string' && options.title.length))
       throw new Meteor.Error(400, 'Required parameter missing');
     if (options.title.length > 100)
       throw new Meteor.Error(413, 'Title too long');
@@ -84,9 +84,8 @@ Meteor.methods({
     }
 });
 
-Meteor.publish('mods', function(skip, limit) {
-
-    return Mods.find({}, {
+Meteor.publish('mods', function(filter, skip, limit) {
+    return Mods.find(filter || {}, {
         sort: {
             updated: 1
         },
@@ -96,7 +95,13 @@ Meteor.publish('mods', function(skip, limit) {
 });
 
 Meteor.methods({
-    modCount: function() {
-        return Mods.find().count();
+    modCount: function(filter, skip, limit) {
+        return Mods.find(filter || {}, {
+            sort: {
+                updated: 1
+            },
+            skip: skip || 0,
+            limit: limit || 0,
+        }).count();
     }
 });

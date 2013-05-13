@@ -101,3 +101,11 @@ Template.pagination.events({
         Session.set('pagingSkip', newSkip);
     }
 });
+
+Template.mods.rendered = function() {
+    $('#inputForge').select2({
+        //we include bootstrap icons in the options
+        escapeMarkup: function(m) { return m; }
+    });
+    $('#inputAvailability').select2();    
+}

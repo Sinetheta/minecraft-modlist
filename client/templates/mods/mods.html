@@ -1,12 +1,34 @@
 <template name="mods">
+
+    <div class="search-well well well-small">
+        <div class="pagination-holder">
+            <input type="text" id="inputModSearch" name="modSearch" placeholder="Search mods...">
+        </div>
+    </div>
+
     <table class="table table-striped" id="mods">
         <thead>
             <tr>
                 <th>Name</th>
                 <th>Supports</th>
                 <th>Author</th>
-                <th>Availability</th>
-                <th>Forge Compatibility</th>
+                <th>
+                    <select id="inputAvailability" name="availability" multiple placeholder="Availability">
+                        <option value="clientside">Clientside</option>
+                        <option value="ssp">SSP</option>
+                        <option value="lan">LAN</option>
+                        <option value="smp">SMP</option>
+                        <option value="na">N/A</option>
+                    </select>
+                </th>
+                <th>
+                    <select id="inputForge" name="forge">
+                        <option value="all">Forge Compatibility (All)</option>
+                        <option value="yes">&lt;i class=&quot;icon-ok&quot;&gt;&lt;/i&gt; Forge Compatible</option>
+                        <option value="required">&lt;i class=&quot;icon-lock&quot;&gt;&lt;/i&gt; Forge Required</option>
+                        <option value="no">&lt;i class=&quot;icon-remove&quot;&gt;&lt;/i&gt; Not Forge Compatible</option>
+                    </select>
+                </th>
                 <th>Updated</th>
             </tr>
         </thead>

@@ -1,6 +1,11 @@
 .pagination-well {
     position: relative;
-    padding-top: 12px;
+}
+.pagination-holder {
+    height: 30px;
+}
+#inputModSearch {
+    margin: 0;
 }
 .pagination-button-container{
     text-align: center;

@@ -1,15 +1,9 @@
 <template name="mods">
 
-    <div class="search-well well well-small">
-        <div class="pagination-holder">
-            <input type="text" id="inputModSearch" name="modSearch" placeholder="Search mods...">
-        </div>
-    </div>
-
-    <table class="table table-striped" id="mods">
+    <table class="table table-striped mod-table" id="mods">
         <thead>
             <tr>
-                <th>Name</th>
+                <th><input type="text" id="inputModSearch" name="modSearch" placeholder="Name"></th>
                 <th>Supports</th>
                 <th>Author</th>
                 <th>

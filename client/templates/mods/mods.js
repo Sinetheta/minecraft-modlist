@@ -24,20 +24,25 @@ Template.mods.mods = function() {
     });
 };
 
+var filterMods = function(event, template) {
+    var title = $('#inputModSearch').val();
+    var forge = $('#inputForge').val();
+    var availability = $('#inputAvailability').val();
+    var filter = {};
+
+    if(forge) filter.forge = forge;
+    if(availability) filter.availability = { $all: [availability] };
+    if(title) filter.title = { $regex: '.*' + title + '.*', $options: 'i' }
+
+    Session.set('pagingFilter', filter);
+    Meteor.call('modCount', Session.get('pagingFilter'), Session.get('pagingSkip'), Session.get('pagingLimit'), function(err, result) {
+        Session.set('totalRecords', result);
+    });
+}
+
 Template.mods.events({
-    'change': function(event, template) {
-        var forge = $('#inputForge').val();
-        var availability = $('#inputAvailability').val();
-        var filter = {};
-
-        if(forge) filter.forge = forge;
-        if(availability) filter.availability = { $all: [availability] };
-
-        Session.set('pagingFilter', filter);
-        Meteor.call('modCount', Session.get('pagingFilter'), Session.get('pagingSkip'), Session.get('pagingLimit'), function(err, result) {
-            Session.set('totalRecords', result);
-        });
-    }
+    'change': filterMods,
+    'keyup #inputModSearch': _.debounce(filterMods, 200)
 });
 
 Handlebars.registerHelper('forge_icon', function(forge) {

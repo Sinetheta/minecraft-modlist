@@ -4,7 +4,7 @@
 .pagination-holder {
     height: 30px;
 }
-#inputModSearch {
+.mod-table input, .mod-table select {
     margin: 0;
 }
 .pagination-button-container{

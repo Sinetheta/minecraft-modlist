@@ -1,0 +1,29 @@
+<!-- this is NOT how this is done sort this out ASAP-->
+
+<template name="mod">
+    {{#each mods}}
+        {{> singleMod}}
+    {{/each}}
+</template>
+
+<template name="singleMod">
+    <header class="hero-unit">
+        <h1>{{title}}</h1>
+        <p class="muted">version - {{version}}</p>
+    </header>
+
+    <dl>
+        <dt>Supports:</dt><dd>{{supports}}</dd>
+        <dt>Author:</dt><dd>{{author}}</dd>
+        <dt>Availability:</dt>
+        <dd>
+            {{#each availability}}
+                {{> badge}}
+            {{/each}}
+        </dd>
+        <dt>Forge Compatibility:</dt><dd>{{forge_icon forge}}</dd>
+        <dt>Added:</dt><dd>{{time_since created}}</dd>
+        <dt>Updated:</dt><dd>{{time_since updated}}</dd>
+        <dt>Description:</dt><dd>{{description}}</dd>
+    </dl>
+</template>

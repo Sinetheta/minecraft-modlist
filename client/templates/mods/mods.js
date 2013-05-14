@@ -1,6 +1,3 @@
-// Create minimongo object
-Mods = new Meteor.Collection('mods');
-
 // Subscribe to 'servers' collection on startup.
 Meteor.modsHandle = Meteor.subscribe('mods');
 

@@ -3,37 +3,24 @@
 // Extend backbone router
 var AppRouter = Backbone.Router.extend({
     routes: {
-        '' : 'index',
-        ':page' : 'page'
+        '': 'index',
+        'mod/:id': 'mod',
+        'submit': 'submit'
     },
     index: function () {
         Session.set('action', 'index');
     },
-    page: function(page){
-        Session.set('action', page);
+    submit: function(){
+        Session.set('action', 'submit');
+    },
+    mod: function(id){
+        Session.set('modId', id);
+        Session.set('action', 'mod');
     }
 });
 
 // Create router instance
 Router = new AppRouter;
-
-/**
- * Push new URL to history and change session action.
- * @param action
- */
-Router.go = function(action){
-    this.navigate('/'+action);
-
-    if(action == ''){
-        action = 'index';
-    }
-
-    /*
-    Changing the action will change the page_controller template automagically
-    thanks to how awesome Meteor is. (Its actually called a reactive template).
-     */
-    Session.set('action', action);
-};
 
 /**
  * Global template helper function to check the current route in a template.
@@ -57,22 +44,4 @@ Template.page_controller.current_page = function(){
 
 Meteor.startup(function () {
     Backbone.history.start({pushState: true});
-
-    // Using jQuery to delegate anchor click events because Meteor cant do it yet
-    $('body').on('click', 'a', function(e){
-        var $this = $(e.currentTarget);
-        // Open external links naturally
-        if($this.hasClass('external')) return true;
-
-        // Get action from link
-        var action = $(e.currentTarget).attr('href');
-        //ignore the login button
-        if (!action || action == '#' || action.match(/javascript/i)) return true;
-        // Prevent default behavior
-        e.preventDefault();
-        e.stopPropagation();
-
-        action = action.replace('/','');
-        Router.go(action);
-    });
 });

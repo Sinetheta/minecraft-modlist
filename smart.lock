@@ -8,7 +8,9 @@
     "basePackages": {
       "accounts-ui-bootstrap-3": {},
       "accounts-ui-bootstrap-dropdown": {},
-      "paginator": {}
+      "paginator": {},
+      "loadpicker": {},
+      "filepicker": {}
     },
     "packages": {
       "accounts-ui-bootstrap-3": {
@@ -25,6 +27,16 @@
         "git": "https://github.com/TimHeckel/meteor-paginator.git",
         "tag": "v0.0.2",
         "commit": "58ce868b5959a7a28f7cea213a7fcd04f03cd23f"
+      },
+      "loadpicker": {
+        "git": "https://github.com/guido4000/loadpicker.git",
+        "tag": "v1.0.0",
+        "commit": "9f8aa83427b21e2d6279db3f018900bf09560352"
+      },
+      "filepicker": {
+        "git": "https://github.com/Filepicker/meteor.git",
+        "tag": "v0.3.0",
+        "commit": "dcb6f3779e5fc105520ba06b0392e3a79c73a7e6"
       }
     }
   }

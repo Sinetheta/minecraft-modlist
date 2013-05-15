@@ -11,61 +11,76 @@
     <div class="alert alert-block">
         <h4>Login required</h4>
         <br>
-        <p>
-            Please <button id="login-reveal" class="btn btn-small">Sign in</button> to submit a mod.
+        <p>Please <button id="login-reveal" class="btn btn-small">Sign in</button> to submit a mod.</p>
     </div>
     {{/if}}
 </template>
 
 <template name="submitForm">
-    <form>
+    <form id="submitForm">
         {{#if error}}
         <div class="alert alert-error">{{error}}</div>
         {{/if}}
 
-        <label for="inputTitle">Mod Name</label>
-        <input type="text" id="inputTitle" name="title">
+        <div class="row-fluid">
+            <div class="span8">
+                <div class="row-fluid">
+                    <div class="span6">
+                        <label for="inputTitle">Mod Name</label>
+                        <input type="text" id="inputTitle" name="title">
 
-        <label for="inputVersion">Mod version</label>
-        <input type="text" id="inputVersion" name="version" placeholder="1.0.0">
+                        <label for="inputAuthor">Author Nickname</label>
+                        <input type="text" id="inputAuthor" name="author">
 
-        <label for="inputAuthor">Author Nickname</label>
-        <input type="text" id="inputAuthor" name="author">
+                        <label for="inputForge">Compatibility with Forge</label>
+                        <select id="inputForge" name="forge">
+                            <option value="yes">&lt;i class=&quot;icon-ok&quot;&gt;&lt;/i&gt; Forge Compatible</option>
+                            <option value="required">&lt;i class=&quot;icon-lock&quot;&gt;&lt;/i&gt; Forge Required</option>
+                            <option value="no">&lt;i class=&quot;icon-remove&quot;&gt;&lt;/i&gt; Not Forge Compatible</option>
+                        </select>
+                    </div>
 
-        <label for="inputSupports">Latest supported version of Minecraft</label>
-        <select type="text" id="inputSupports" name="supports">
-            <option>1.5.2</option>
-            <option>1.5.1</option>
-            <option>1.5.0</option>
-            <option>1.4.6/1.4.7</option>
-            <option>1.4.4/1.4.5</option>
-            <option>1.4.2</option>
-        </select>
+                    <div class="span6">
+                        <label for="inputVersion">Mod version</label>
+                        <input type="text" id="inputVersion" name="version" placeholder="1.0.0">
 
-        <label for="inputForge">Compatibility with Forge</label>
-        <select id="inputForge" name="forge">
-            <option value="yes">&lt;i class=&quot;icon-ok&quot;&gt;&lt;/i&gt; Forge Compatible</option>
-            <option value="required">&lt;i class=&quot;icon-lock&quot;&gt;&lt;/i&gt; Forge Required</option>
-            <option value="no">&lt;i class=&quot;icon-remove&quot;&gt;&lt;/i&gt; Not Forge Compatible</option>
-        </select>
+                        <label for="inputSupports">Latest supported version of Minecraft</label>
+                        <select type="text" id="inputSupports" name="supports">
+                            <option>1.5.2</option>
+                            <option>1.5.1</option>
+                            <option>1.5.0</option>
+                            <option>1.4.6/1.4.7</option>
+                            <option>1.4.4/1.4.5</option>
+                            <option>1.4.2</option>
+                        </select>
 
-        <label for="inputAvailability">Availability</label>
-        <select id="inputAvailability" name="availability" multiple placeholder="Pick some tags">
-            <option value="clientside">Clientside</option>
-            <option value="ssp">SSP</option>
-            <option value="lan">LAN</option>
-            <option value="smp">SMP</option>
-            <option value="na">N/A</option>
-        </select>
-        <span class="help-block">Please select all that apply</span>
+                        <label for="inputAvailability">Availability</label>
+                        <select id="inputAvailability" name="availability" multiple placeholder="Pick some tags">
+                            <option value="clientside">Clientside</option>
+                            <option value="ssp">SSP</option>
+                            <option value="lan">LAN</option>
+                            <option value="smp">SMP</option>
+                            <option value="na">N/A</option>
+                        </select>
+                        <span class="help-block">Please select all that apply</span>
+                    </div>
+                </div>
 
-        <label for="inputDescription">Description</label>
-        <textarea type="text" id="inputDescription" name="description"></textarea>
+                <label for="inputDescription">Description</label>
+                <textarea type="text" id="inputDescription" name="description"></textarea>
 
-        <div>
-            <button id="submit-mod" class="btn btn-primary">Submit</button>
+                <div>
+                    <button id="submit-mod" class="btn btn-primary">Submit</button>
+                </div>
+            </div>
+            <div class="span4 pull-right">
+                {{> submitGallery}}
+
+                <button id="inputImage" class="btn">Add Images</button>
+                <span class="help-block">Upload images from your your computer, or share pictures from Facebook, Dropbox, Instagram...</span>
+            </div>
         </div>
-        
+
     </form>
 </template>
 
@@ -86,6 +101,21 @@
 
         <div class="modal-footer">
             <a href="/" class="btn btn-primary save">Okay</a>
+        </div>
+    </div>
+</template>
+
+<template name="submitGallery">
+    <div class="image-gallery">
+        <h2 class="text-center">Mod Images</h2>
+
+        <div class="image-focus">
+            <img src="{{focusImage.url}}" alt="{{focusImage.alt}}" class="img-rounded">
+        </div>
+        <div class="image-thumbs clearfix">
+            {{#each images}}
+                <a href="#" class="thumb-link pull-left"><img src="{{url}}" alt="{{alt}}" class="img-polaroid"></a>
+            {{/each}}
         </div>
     </div>
 </template>

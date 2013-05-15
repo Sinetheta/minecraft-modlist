@@ -1,29 +1,43 @@
-<!-- this is NOT how this is done sort this out ASAP-->
-
 <template name="mod">
-    {{#each mods}}
-        {{> singleMod}}
-    {{/each}}
-</template>
-
-<template name="singleMod">
+{{#with mod}}
     <header class="hero-unit">
         <h1>{{title}}</h1>
         <p class="muted">version - {{version}}</p>
     </header>
+    <div class="row-fluid">
+        <div class="span8">
+            <dl>
+                <dt>Supports:</dt><dd>{{supports}}</dd>
+                <dt>Author:</dt><dd>{{author}}</dd>
+                <dt>Availability:</dt>
+                <dd>
+                    {{#each availability}}
+                        {{> badge}}
+                    {{/each}}
+                </dd>
+                <dt>Forge Compatibility:</dt><dd>{{forge_icon forge}}</dd>
+                <dt>Added:</dt><dd>{{time_since created}}</dd>
+                <dt>Updated:</dt><dd>{{time_since updated}}</dd>
+                <dt>Description:</dt><dd>{{description}}</dd>
+            </dl>
+        </div>
 
-    <dl>
-        <dt>Supports:</dt><dd>{{supports}}</dd>
-        <dt>Author:</dt><dd>{{author}}</dd>
-        <dt>Availability:</dt>
-        <dd>
-            {{#each availability}}
-                {{> badge}}
-            {{/each}}
-        </dd>
-        <dt>Forge Compatibility:</dt><dd>{{forge_icon forge}}</dd>
-        <dt>Added:</dt><dd>{{time_since created}}</dd>
-        <dt>Updated:</dt><dd>{{time_since updated}}</dd>
-        <dt>Description:</dt><dd>{{description}}</dd>
-    </dl>
+        <div class="span4">
+            {{#if focusImage}}
+            <div class="image-gallery">
+                <h2 class="text-center">Mod Images</h2>
+
+                <div class="image-focus">
+                        <img src="{{focusImage.url}}" alt="{{focusImage.alt}}" class="img-polaroid">
+                </div>
+                <div class="image-thumbs clearfix">
+                    {{#each images}}
+                        <a href="#" class="thumb-link pull-left"><img src="{{url}}" alt="{{alt}}" class="img-polaroid"></a>
+                    {{/each}}
+                </div>
+            </div>
+            {{/if}}
+        </div>
+    </div>
+{{/with}}
 </template>

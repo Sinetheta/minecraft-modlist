@@ -2,6 +2,8 @@
   "packages": {
     "accounts-ui-bootstrap-3": {},
     "accounts-ui-bootstrap-dropdown": {},
-    "paginator": {}
+    "paginator": {},
+    "loadpicker": {},
+    "filepicker": {}
   }
 }

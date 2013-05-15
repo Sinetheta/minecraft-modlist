@@ -61,6 +61,8 @@ Meteor.methods({
             description: options.description,
             forge: options.forge,
             availability: options.availability,
+            images: options.images,
+            featureImage: options.featureImage,
             created: (new Date()).getTime(),
             updated: (new Date()).getTime()
         });
@@ -76,6 +78,8 @@ Meteor.methods({
             description: options.description,
             forge: options.forge,
             availability: options.availability,
+            images: options.images,
+            featureImage: options.featureImage,
             updated: (new Date()).getTime()
         });
     },

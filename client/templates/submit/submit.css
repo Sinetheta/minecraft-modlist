@@ -2,3 +2,29 @@ label {
     margin-top: 1em;
     font-weight: 700;
 }
+
+#inputDescription {
+    width: 96%;
+    height: 200px;
+}
+
+.image-gallery{
+
+}
+
+.image-gallery h2{
+
+}
+
+.image-focus{
+
+}
+.image-focus img{
+  margin:0 auto;
+}
+.thumb-link {
+    margin: 2px;
+}
+.image-thumbs img{
+    height: 58px;
+}

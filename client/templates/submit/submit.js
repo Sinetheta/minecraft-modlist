@@ -48,7 +48,7 @@ Template.submit.events({
         var title = template.find('[name="title"]').value;
         var version = template.find('[name="version"]').value;
         var author = template.find('[name="author"]').value;
-        var description = template.find('[name="description"]').value;
+        var description = $('#inputDescription').cleanHtml();
         var supports = template.find('[name="supports"]').value;
         var forge = $(template.find('[name="forge"]')).val();
         var availability = $(template.find('[name="availability"]')).val();
@@ -86,6 +86,7 @@ Template.submit.rendered = function() {
         escapeMarkup: function(m) { return m; }
     });
     $('#inputAvailability').select2();
+    if(!$('#inputDescription').attr('contenteditable')) $('#inputDescription').wysiwyg();
 }
 
 Template.submitGallery.images = function() {

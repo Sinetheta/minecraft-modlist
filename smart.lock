@@ -2,7 +2,7 @@
   "meteor": {
     "git": "https://github.com/meteor/meteor.git",
     "branch": "master",
-    "commit": "bfe4b72ebec4367eaddcdf0887fcf5e649d9dcb8"
+    "commit": "5d736d4bf0448c7db1f9b47124dfafc34a9631bb"
   },
   "dependencies": {
     "basePackages": {
@@ -10,13 +10,14 @@
       "accounts-ui-bootstrap-dropdown": {},
       "paginator": {},
       "loadpicker": {},
-      "filepicker": {}
+      "filepicker": {},
+      "bootstrap-wysiwyg": {}
     },
     "packages": {
       "accounts-ui-bootstrap-3": {
         "git": "https://github.com/mangasocial/meteor-accounts-ui-bootstrap-3.git",
-        "tag": "v0.1.5",
-        "commit": "4be5a541987b31e87c93277a54126e2ac08e5a1b"
+        "tag": "v0.1.6",
+        "commit": "55d9e0dcf847521fc7192c7ef27ae84d2166f874"
       },
       "accounts-ui-bootstrap-dropdown": {
         "git": "https://github.com/erobit/meteor-accounts-ui-bootstrap-dropdown.git",
@@ -37,6 +38,11 @@
         "git": "https://github.com/Filepicker/meteor.git",
         "tag": "v0.3.0",
         "commit": "dcb6f3779e5fc105520ba06b0392e3a79c73a7e6"
+      },
+      "bootstrap-wysiwyg": {
+        "git": "https://github.com/mcrider/meteor-bootstrap-wysiwyg.git",
+        "tag": "v0.1.0",
+        "commit": "b9b1ffadb42b8bbfade08aaea10e4fbe890d21dd"
       }
     }
   }

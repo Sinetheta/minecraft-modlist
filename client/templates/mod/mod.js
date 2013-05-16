@@ -12,11 +12,19 @@ Template.mod.focusImage = function() {
 };
 
 Template.mod.events({
-    'click .thumb-link': function(event, template) {
+    'click .thumb-link': function focusImage(event, template) {
         var index = $(event.target).closest('a').index();
         var mod = Mods.find({ _id: Session.get('modId')}).fetch()[0];
 
         Session.set('focusImage', mod.images[index]);
         event.preventDefault();
-    }
+    }/*,
+    'click .nav-tabs a': function showTab(event) {
+        var targetId = $(event.currentTarget).attr('href');
+
+        $('.tab-pane').removeClass('active');
+        $(targetId).addClass('active');
+
+        event.preventDefault();
+    }*/
 });

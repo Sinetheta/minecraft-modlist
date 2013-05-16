@@ -17,14 +17,44 @@ label {
 }
 
 .image-focus{
-
+    padding: 1em;
 }
 .image-focus img{
-  margin:0 auto;
+    display: block;
+    margin:0 auto;
 }
 .thumb-link {
     margin: 2px;
 }
 .image-thumbs img{
     height: 58px;
+}
+.wyswig-holder{
+    margin-top: .5em;
+}
+.wyswig-holder .btn-toolbar {
+    margin-top: 0;
+}
+#inputDescription {
+    min-height: 250px;
+    background-color: #FFF;
+    border-collapse: separate;
+    border: 1px solid #CCC;
+    padding: 4px;
+    box-sizing: content-box;
+    -webkit-box-shadow: rgba(0, 0, 0, 0.0745098) 0px 1px 1px 0px inset;
+    box-shadow: rgba(0, 0, 0, 0.0745098) 0px 1px 1px 0px inset;
+    border-radius: 3px;
+    overflow: scroll;
+    outline: none;
+}
+div[data-role="editor-toolbar"] {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.dropdown-menu a {
+    cursor: pointer;
 }

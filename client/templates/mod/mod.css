@@ -1,0 +1,17 @@
+.content-box {
+    border-radius: 6px;
+    background: #FCFCFC;
+    border: 1px solid #D6D6D6;
+    -webkit-box-shadow: 0 0 12px rgba(0, 0, 0, .1);
+    -moz-box-shadow: 0 0 12px rgba(0,0,0,.1);
+    box-shadow: 0 0 12px rgba(0, 0, 0, .1);
+}
+.single-mod {
+    padding: 1em;
+}
+.single-mod h1 span{
+    font-size: 1rem;
+}
+.download {
+    margin-top: 2em;
+}

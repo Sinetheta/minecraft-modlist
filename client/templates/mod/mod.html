@@ -1,42 +1,65 @@
 <template name="mod">
 {{#with mod}}
-    <header class="hero-unit">
-        <h1>{{title}}</h1>
-        <p class="muted">version - {{version}}</p>
-    </header>
-    <div class="row-fluid">
-        <div class="span8">
-            <dl>
-                <dt>Supports:</dt><dd>{{supports}}</dd>
-                <dt>Author:</dt><dd>{{author}}</dd>
-                <dt>Availability:</dt>
-                <dd>
-                    {{#each availability}}
-                        {{> badge}}
-                    {{/each}}
-                </dd>
-                <dt>Forge Compatibility:</dt><dd>{{forge_icon forge}}</dd>
-                <dt>Added:</dt><dd>{{time_since created}}</dd>
-                <dt>Updated:</dt><dd>{{time_since updated}}</dd>
-                <dt>Description:</dt><dd>{{description}}</dd>
-            </dl>
-        </div>
+    <div class="content-box single-mod">
+        <h1>{{title}} <span class="muted">by {{author}}</span></h1>
+        <div class="row-fluid">
 
-        <div class="span4">
-            {{#if focusImage}}
-            <div class="image-gallery">
-                <h2 class="text-center">Mod Images</h2>
-
-                <div class="image-focus">
-                        <img src="{{focusImage.url}}" alt="{{focusImage.alt}}" class="img-polaroid">
-                </div>
-                <div class="image-thumbs clearfix">
-                    {{#each images}}
-                        <a href="#" class="thumb-link pull-left"><img src="{{url}}" alt="{{alt}}" class="img-polaroid"></a>
-                    {{/each}}
+            <div class="span4">
+                <ul class="nav nav-tabs" id="mod-tabs">
+                    <li class="active"><a href="#mod-images" data-toggle="tab">Images</a></li>
+                    <li><a href="#mod-videos" data-toggle="tab">Videos</a></li>
+                </ul>
+                <div class="tab-content">
+                    <div class="tab-pane active" id="mod-images">
+                        <div class="image-gallery">
+                            <div class="image-focus">
+                                    <img src="{{focusImage.url}}" alt="{{focusImage.alt}}" class="img-polaroid">
+                            </div>
+                            <div class="well well-small image-thumbs clearfix">
+                                {{#each images}}
+                                    <a href="#" class="thumb-link pull-left"><img src="{{url}}" alt="{{alt}}" class="img-polaroid"></a>
+                                {{/each}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="mod-videos">
+                        <p class="muted">Coming soon...</p>
+                    </div>
                 </div>
             </div>
-            {{/if}}
+
+            <div class="span8">
+                <ul class="nav nav-tabs" id="mod-tabs">
+                    <li class="active"><a href="#mod-info" data-toggle="tab">Info</a></li>
+                    <li><a href="#mod-description" data-toggle="tab">Description</a></li>
+                    <li><a href="#mod-changes" data-toggle="tab">Changes</a></li>
+                    <li><a href="#mod-versions" data-toggle="tab">Versions</a></li>
+                </ul>
+                <div class="tab-content">
+                    <div class="tab-pane active" id="mod-info">
+                        <ul class="unstyled">
+                            <li>Supports Minecraft {{supports}}</li>
+                            <li>{{forge_icon forge}}</li>
+                            <li>Availability:
+                                {{#each availability}}
+                                    {{> badge}}
+                                {{/each}}
+                            </li>
+                            <li>Last updated: {{time_since updated}}</li>
+                        </ul>
+                        <p class="text-center"><a href="#" class="download btn btn-primary btn-large">Download Latest Version</a></p>
+                    </div>
+                    <div class="tab-pane" id="mod-description">
+                        {{description}}
+                    </div>
+                    <div class="tab-pane" id="mod-changes">
+                        <p class="muted">Coming soon...</p>
+                    </div>
+                    <div class="tab-pane" id="mod-versions">
+                        <p class="muted">Coming soon...</p>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 {{/with}}

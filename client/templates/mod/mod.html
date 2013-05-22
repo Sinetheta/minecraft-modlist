@@ -8,6 +8,7 @@
                 <ul class="nav nav-tabs" id="mod-tabs">
                     <li class="active"><a href="#mod-images" data-toggle="tab">Images</a></li>
                     <li><a href="#mod-videos" data-toggle="tab">Videos</a></li>
+                    <li><a href="#mod-spotlights" data-toggle="tab">Spotlights</a></li>
                 </ul>
                 <div class="tab-content">
                     <div class="tab-pane active" id="mod-images">
@@ -25,6 +26,9 @@
                     <div class="tab-pane" id="mod-videos">
                         <p class="muted">Coming soon...</p>
                     </div>
+                    <div class="tab-pane" id="mod-spotlights">
+                        <p class="muted">Coming soon...</p>
+                    </div>
                 </div>
             </div>
 
@@ -32,21 +36,32 @@
                 <ul class="nav nav-tabs" id="mod-tabs">
                     <li class="active"><a href="#mod-info" data-toggle="tab">Info</a></li>
                     <li><a href="#mod-description" data-toggle="tab">Description</a></li>
-                    <li><a href="#mod-changes" data-toggle="tab">Changes</a></li>
-                    <li><a href="#mod-versions" data-toggle="tab">Versions</a></li>
+                    <li><a href="#mod-changes" data-toggle="tab">Change Log</a></li>
+                    <li><a href="#mod-versions" data-toggle="tab">Downloads</a></li>
                 </ul>
                 <div class="tab-content">
                     <div class="tab-pane active" id="mod-info">
-                        <ul class="unstyled">
-                            <li>Supports Minecraft {{supports}}</li>
-                            <li>{{forge_icon forge}}</li>
-                            <li>Availability:
+                        <div class="container-fluid">
+                            <div class="row-fluid">
+                                <div class="span6">
+                                    <ul class="unstyled">
+                                        <li>Supports Minecraft {{supports}}</li>
+                                        <li>{{forge_icon forge}}</li>
+                                        <li>Availability:
                                 {{#each availability}}
                                     {{> badge}}
                                 {{/each}}
                             </li>
-                            <li>Last updated: {{time_since updated}}</li>
-                        </ul>
+                                    </ul>
+                                </div>
+                                <div class="span6">
+                                    <ul class="unstyled">
+                                        <li>Created {{time_readable created}}</li>
+                                        <li>Last updated {{time_since updated}}</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
                         <p class="text-center"><a href="#" class="download btn btn-primary btn-large">Download Latest Version</a></p>
                     </div>
                     <div class="tab-pane" id="mod-description">

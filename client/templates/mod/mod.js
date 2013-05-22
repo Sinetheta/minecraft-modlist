@@ -28,3 +28,7 @@ Template.mod.events({
         event.preventDefault();
     }*/
 });
+
+Handlebars.registerHelper('time_readable', function(date) {
+    return moment(date).format('ll');
+});

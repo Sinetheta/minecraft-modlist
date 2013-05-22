@@ -23,8 +23,15 @@ Template.submit.events({
         setTimeout(function(){$('.dropdown-toggle').click();});
     },
     'click #inputImage': function(e) {
-        filepicker.pickAndStore({mimetype:'image/*'},
-            {location:'S3', access: 'public'}, function(fpfiles){
+        filepicker.pickAndStore({
+            mimetype:'image/*',
+            services: ['COMPUTER']
+        },
+        {
+            location:'S3', 
+            access: 'public'
+        }, 
+        function(fpfiles){
            var images = Session.get('submitImages');
             
             _.each(fpfiles, function(pic) {

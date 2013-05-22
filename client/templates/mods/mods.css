@@ -4,8 +4,14 @@
 .pagination-holder {
     height: 30px;
 }
+.mod-table .text-center{
+    text-align: center;
+}
 .mod-table input, .mod-table select {
     margin: 0;
+}
+.mod-table th {
+    text-align: center;
 }
 .pagination-button-container{
     text-align: center;
@@ -38,4 +44,19 @@
 }
 .label-na {
     background: #7a43b6;
+}
+.well-micro {
+    padding: .2em .4em;
+    border-radius: 3px;
+}
+.rating-holder {
+    width: 4.6em;
+    margin: 0 auto;
+    white-space: nowrap;
+}
+.rating-star {
+    cursor: pointer;
+}
+.rating-star:hover {
+    font-size: 1.2em;
 }

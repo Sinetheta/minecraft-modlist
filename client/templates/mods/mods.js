@@ -3,7 +3,7 @@ Meteor.modsHandle = Meteor.subscribe('mods');
 
 Session.set('pagingFilter', {});
 Session.set('pagingSkip', 0);
-Session.set('pagingLimit', 3);
+Session.set('pagingLimit', 50);
 Session.set('totalRecords', 0);
 
 Meteor.call('modCount', Session.get('pagingFilter'), Session.get('pagingSkip'), Session.get('pagingLimit'), function(err, result) {

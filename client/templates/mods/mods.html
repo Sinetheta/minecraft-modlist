@@ -24,6 +24,7 @@
                         <option value="no">Not Forge Compatible</option>
                     </select>
                 </th>
+                <th class="muted">Rating<br />(Coming soon)</th>
                 <th>Updated</th>
             </tr>
         </thead>
@@ -51,8 +52,12 @@
                 {{> badge}}
             {{/each}}
         </td>
-        <td>{{forge_icon forge}}</td>
-        <td>{{time_since updated}}</td>
+        <td class="text-center">{{forge_icon forge}}</td>
+        <td>
+            <div class="rating-holder well well-micro muted" title="Coming soon...">
+                <i class="icon-star rating-star"></i><i class="icon-star rating-star"></i><i class="icon-star rating-star"></i><i class="icon-star-empty rating-star"></i><i class="icon-star-empty rating-star"></i></div>
+        </td>
+        <td class="text-center">{{time_since updated}}</td>
     </tr>
 </template>
 

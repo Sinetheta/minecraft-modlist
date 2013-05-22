@@ -63,6 +63,7 @@ Meteor.methods({
             availability: options.availability,
             images: options.images,
             featureImage: options.featureImage,
+            download: options.download,
             created: (new Date()).getTime(),
             updated: (new Date()).getTime()
         });

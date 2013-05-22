@@ -7,7 +7,9 @@ label {
     width: 96%;
     height: 200px;
 }
-
+#inputFile {
+    margin-bottom: 10px;
+}
 .image-gallery{
 
 }
@@ -68,4 +70,37 @@ div[data-role="editor-toolbar"] {
 #submit-mod {
     display: block;
     margin: 0 auto;
+}
+.cr-error ul {
+    color: red;
+    list-style: none;
+    font-size: small;
+    margin-left: 0px;
+}
+
+.cr-show-unit {
+    padding: 50px 0px;
+}
+
+.cr-btn-download {
+    margin-top: 20px;
+}
+
+.cr-caret-fix {
+    height: 22px;
+}
+.help-inline {
+    display: none;
+}
+.error .help-inline {
+    display: inline;
+}
+.success-block {
+    display: none;
+}
+.success .success-block {
+    display: inline;
+}
+.success .help-block {
+    display: none;
 }

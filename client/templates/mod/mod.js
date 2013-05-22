@@ -32,3 +32,11 @@ Template.mod.events({
 Handlebars.registerHelper('time_readable', function(date) {
     return moment(date).format('ll');
 });
+
+Handlebars.registerHelper('latest', function(download) {
+    return download? download[0].url: '#';
+});
+
+Handlebars.registerHelper('markdown_to_html', function(md) {
+    return markdown.toHTML(md);
+});

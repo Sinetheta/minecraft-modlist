@@ -6,6 +6,7 @@
     "loadpicker": {},
     "filepicker": {},
     "bootstrap-wysiwyg": {},
-    "marked": {}
+    "marked": {},
+    "regulate.js": {}
   }
 }

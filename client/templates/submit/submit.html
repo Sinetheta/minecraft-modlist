@@ -17,15 +17,17 @@
 
 <template name="submitForm">
     <form id="submitForm">
-        {{#if error}}
-        <div class="alert alert-error">{{error}}</div>
-        {{/if}}
         <div class="row">
             <div class="span8">
                 <div class="row-fluid">
                     <div class="span6">
-                        <label for="inputTitle">Mod Name</label>
-                        <input type="text" id="inputTitle" name="title">
+                        <div class="control-group">
+                            <label for="inputTitle" class="control-label">Mod Name</label>
+                            <div class="controls">
+                                <input type="text" id="inputTitle" name="title" required>
+                                <span class="help-inline">Title required.</span>
+                            </div>
+                        </div>
 
                         <label for="inputAuthor">Author Nickname</label>
                         <input type="text" id="inputAuthor" name="author">
@@ -39,8 +41,13 @@
                     </div>
 
                     <div class="span6">
-                        <label for="inputVersion">Mod version</label>
-                        <input type="text" id="inputVersion" name="version" placeholder="1.0.0">
+                        <div class="control-group">
+                            <label for="inputVersion" class="control-label">Mod Version</label>
+                            <div class="controls">
+                                <input type="text" id="inputVersion" name="version" placeholder="1.0.0" required>
+                                <span class="help-inline">Version required.</span>
+                            </div>
+                        </div>
 
                         <label for="inputSupports">Latest supported version of Minecraft</label>
                         <select type="text" id="inputSupports" name="supports">
@@ -65,18 +72,32 @@
                 </div>
             </div>
             <div class="span4">
+                <div class="control-group">
+                    <label for="inputDownload" class="control-label">Download Link</label>
+                    <div class="controls">
+                        <input type="url" id="inputDownload" name="download" placeholder="http://filez.com/your-mod.zip" required>
+                        <button id="inputFile" class="btn">Upload Mod</button>
+                        <span class="help-block">Upload a file from your your computer, or provide us with a link to your download.</span>
+                        <span class="text-success success-block"><strong>Upload Successful!</strong></span>
+                        <span class="help-inline">URL required.</span>
+                    </div>
+                </div>
                 {{> submitGallery}}
                 <button id="inputImage" class="btn">Add Images</button>
-                <span class="help-block">Upload images from your your computer, or share pictures from Facebook, Dropbox, Instagram...</span>
+                <span class="help-block">Upload images from your your computer</span>
             </div>
         </div>
         <div class="row">
             <div class="span6">
-                <h3>Description</h3>
-                <div id="alerts"></div>
                 <div class="wyswig-holder">
-                        <div id="toolbar"></div>
-                        <textarea id="editor"></textarea>
+                    <div class="control-group">
+                        <label for="editor" class="control-label"><h3>Description</h3></label>
+                        <div class="controls">
+                            <div id="toolbar"></div>
+                            <textarea id="editor" required></textarea>
+                            <div class="alert alert-error help-inline">Description required.</div>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="span6">

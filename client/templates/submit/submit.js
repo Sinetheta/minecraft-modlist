@@ -10,7 +10,7 @@ Session.set('submitImages', []);
     {url: 'http://lorempixel.com/output/people-q-c-640-480-7.jpg'},
 ]);*/
 
-Meteor.startup(function(){
+Meteor.startup(function() {
     loadPicker('AI2InDdBERZ6M2VTDO4RGz');
 });
 
@@ -20,20 +20,43 @@ Template.submit.showSuccessDialog = function() {
 
 Template.submit.events({
     'click #login-reveal': function() {
-        setTimeout(function(){$('.dropdown-toggle').click();});
+        setTimeout(function() {
+            $('.dropdown-toggle').click();
+        });
+    },
+    'click #inputFile': function(e) {
+        filepicker.pickAndStore({
+            services: ['COMPUTER']
+        }, {
+            location: 'S3',
+            access: 'public'
+        },
+
+        function(files) {
+            var url = 'https://s3.amazonaws.com/modlist/' + files[0].key;
+
+            $('#inputDownload').val(url)
+                .prop('disabled', true)
+                .closest('.control-group').addClass('success');
+        });
+
+        function trimExtension(str) {
+            return str.substr(0, str.lastIndexOf('.'));
+        }
+        e.preventDefault();
     },
     'click #inputImage': function(e) {
         filepicker.pickAndStore({
-            mimetype:'image/*',
+            mimetype: 'image/*',
             services: ['COMPUTER']
-        },
-        {
-            location:'S3', 
+        }, {
+            location: 'S3',
             access: 'public'
-        }, 
-        function(fpfiles){
-           var images = Session.get('submitImages');
-            
+        },
+
+        function(fpfiles) {
+            var images = Session.get('submitImages');
+
             _.each(fpfiles, function(pic) {
                 var name = trimExtension(pic.key);
                 images.push({
@@ -43,8 +66,9 @@ Template.submit.events({
                 });
             });
             Session.set('submitImages', images);
-            if(!Session.get('focusImage')) Session.set('focusImage', images[0]);
+            if (!Session.get('focusImage')) Session.set('focusImage', images[0]);
         });
+
         function trimExtension(str) {
             return str.substr(0, str.lastIndexOf('.'));
         }
@@ -52,37 +76,49 @@ Template.submit.events({
     },
     'click #submit-mod': function(event, template) {
         event.preventDefault();
+        var isInvalid = $(':invalid').length > 0;
+
+        if(isInvalid) {
+            $(':invalid').closest('.control-group').addClass('error');
+            return false;
+        }
         var title = template.find('[name="title"]').value;
         var version = template.find('[name="version"]').value;
-        var author = template.find('[name="author"]').value;
-        var description = $('#inputDescription').cleanHtml();
+        var url = template.find('[name="download"]').value;
         var supports = template.find('[name="supports"]').value;
-        var forge = $(template.find('[name="forge"]')).val();
-        var availability = $(template.find('[name="availability"]')).val();
-        var images = Session.get('submitImages');
-        var featureImage = Session.get('focusImage');
 
-        event.preventDefault();
-
-        if (title.length && description.length) {
-            Meteor.call('createMod', {
+        var data = {
+            title: title,
+            version: version,
+            author: template.find('[name="author"]').value,
+            description: $('#editor').val(),
+            supports: supports,
+            forge: $(template.find('[name="forge"]')).val(),
+            availability: $(template.find('[name="availability"]')).val(),
+            images: Session.get('submitImages'),
+            featureImage: Session.get('focusImage'),
+            download: [{
                 title: title,
                 version: version,
-                author: author,
-                description: description,
-                supports: supports,
-                forge: forge,
-                availability: availability,
-                images: images,
-                featureImage: featureImage
-            }, function(error, mod) {
-                if (!error) {
-                    Session.set('showSuccessDialog', true);
-                }
-            });
-        } else {
-            //Session.set('createError', 'It needs a title and a description, or why bother?');
-        }
+                gameVersion: supports,
+                url: url,
+                added: (new Date()).getTime()
+            }]
+        };
+
+        Meteor.call('createMod', data, function(error, mod) {
+            if (!error) {
+                Session.set('showSuccessDialog', true);
+            }
+        });
+    },
+    'change :required': function(event) {
+        var isInvalid = $(event.target).is(':invalid');
+
+        $(event.target).closest('.control-group')[isInvalid? 'addClass': 'removeClass']('error');
+    },
+    'change #editor': function() {
+        
     }
 });
 
@@ -90,15 +126,12 @@ Template.submit.rendered = function() {
     $('#inputSupports').select2();
     $('#inputForge').select2({
         //we include bootstrap icons in the options
-        escapeMarkup: function(m) { return m; }
+        escapeMarkup: function(m) {
+            return m;
+        }
     });
     $('#inputAvailability').select2();
-    // Set default options
-    /*$('#wyswig-input').on('keyup', function() {
-        var content = $('#wyswig-input').val();
-        console.log(marked(content))
-        $('#wyswig-preview').html(marked(content));
-    });*/
+
     $('#editor').markdownEditor({
         toolbarLoc: $('#toolbar'),
         toolbar: 'default',

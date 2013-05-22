@@ -93,7 +93,18 @@ Template.submit.rendered = function() {
         escapeMarkup: function(m) { return m; }
     });
     $('#inputAvailability').select2();
-    if(!$('#inputDescription').attr('contenteditable')) $('#inputDescription').wysiwyg();
+    // Set default options
+    /*$('#wyswig-input').on('keyup', function() {
+        var content = $('#wyswig-input').val();
+        console.log(marked(content))
+        $('#wyswig-preview').html(marked(content));
+    });*/
+    $('#editor').markdownEditor({
+        toolbarLoc: $('#toolbar'),
+        toolbar: 'default',
+        preview: $('#preview')
+    });
+    $('#editor').autogrow();
 }
 
 Template.submitGallery.images = function() {

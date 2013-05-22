@@ -5,6 +5,7 @@
     "paginator": {},
     "loadpicker": {},
     "filepicker": {},
-    "bootstrap-wysiwyg": {}
+    "bootstrap-wysiwyg": {},
+    "marked": {}
   }
 }

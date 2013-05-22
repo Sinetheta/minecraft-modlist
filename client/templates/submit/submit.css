@@ -58,3 +58,14 @@ div[data-role="editor-toolbar"] {
 .dropdown-menu a {
     cursor: pointer;
 }
+#editor {
+    width: 100%;
+    min-height: 200px;
+}
+#preview {
+    min-height: 206px;
+}
+#submit-mod {
+    display: block;
+    margin: 0 auto;
+}

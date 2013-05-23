@@ -35,7 +35,6 @@
             <div class="span8">
                 <ul class="nav nav-tabs" id="mod-tabs">
                     <li class="active"><a href="#mod-info" data-toggle="tab">Info</a></li>
-                    <li><a href="#mod-description" data-toggle="tab">Description</a></li>
                     <li><a href="#mod-recipes" data-toggle="tab">Recipes</a></li>
                     <li><a href="#mod-configuration" data-toggle="tab">Configuration</a></li>
                     <li><a href="#mod-versions" data-toggle="tab">Downloads</a></li>
@@ -65,9 +64,9 @@
                             </div>
                         </div>
                         <p class="text-center"><a href="{{latest download}}" class="download btn btn-primary btn-large">Download Latest Version</a></p>
-                    </div>
-                    <div class="tab-pane" id="mod-description">
-                        {{{markdown_to_html description}}}
+                        <div class="description">
+                            {{{markdown_to_html description}}}
+                        </div>
                     </div>
                     <div class="tab-pane" id="mod-recipes">
                         <p class="muted">Coming soon...</p>
